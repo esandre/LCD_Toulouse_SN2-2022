@@ -13,6 +13,7 @@
                 case 5: return Digits.Five;
                 case 6: return Digits.Six;
                 case 7: return Digits.Seven;
+                case 8: return Digits.Eight;
                 default: throw new NotImplementedException();
             }
         }
