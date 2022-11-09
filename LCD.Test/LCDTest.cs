@@ -2,56 +2,24 @@ namespace LCD.Test
 {
     public class LCDTest
     {
-        [Fact]
-        public void Test1()
+        public static readonly object[][] Associations = new[]
         {
-            // ETANT DONNE le chiffre 1
-            // QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(1);
+            new object[] { 1, Digits.One },
+            new object[] { 2, Digits.Two },
+            new object[] { 3, Digits.Three },
+            new object[] { 4, Digits.Four }
+        };
 
-            // ALORS on obtient deux lignes verticales
-            Assert.Equal("" + Environment.NewLine +
-                         "|" + Environment.NewLine +
-                         "|" + Environment.NewLine, lcd);
-        }
-
-        [Fact]
-        public void Test2()
+        [Theory]
+        [MemberData(nameof(Associations))]
+        public void TestChiffreUnique(int chiffre, string representation)
         {
-            // ETANT DONNE le chiffre 2
+            // ETANT DONNE le chiffre <chiffre>
             // QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(2);
+            var lcd = new AfficheurLCD().Convert(chiffre);
 
-            // ALORS on obtient trois lignes horizontales et un deux lignes verticales opposées
-            Assert.Equal(" _ " + Environment.NewLine +
-                         " _|" + Environment.NewLine +
-                         "|_ " + Environment.NewLine, lcd);
-        }
-
-        [Fact]
-        public void Test3()
-        {
-            // ETANT DONNE le chiffre 3
-            // QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(3);
-
-            // ALORS on obtient trois lignes horizontales et un deux lignes verticales côté droit
-            Assert.Equal(" _ " + Environment.NewLine +
-                         " _|" + Environment.NewLine +
-                         " _|" + Environment.NewLine, lcd);
-        }
-
-        [Fact]
-        public void Test4()
-        {
-            // ETANT DONNE le chiffre 4
-            // QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(4);
-
-            // ALORS on obtient trois lignes horizontales et un deux lignes verticales opposées
-            Assert.Equal("   " + Environment.NewLine +
-                         "|_|" + Environment.NewLine +
-                         "  |" + Environment.NewLine, lcd);
+            // ALORS on obtient sa représentation LCD
+            Assert.Equal(representation, lcd);
         }
     }
 }
