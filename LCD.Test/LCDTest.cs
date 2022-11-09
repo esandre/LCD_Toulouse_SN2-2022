@@ -11,7 +11,8 @@ namespace LCD.Test
             new object[] { 5, Digits.Five },
             new object[] { 6, Digits.Six },
             new object[] { 7, Digits.Seven },
-            new object[] { 8, Digits.Eight }
+            new object[] { 8, Digits.Eight },
+            new object[] { 9, Digits.Nine }
         };
 
         [Theory]
