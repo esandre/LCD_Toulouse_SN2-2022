@@ -11,6 +11,7 @@
                 case 3: return Digits.Three;
                 case 4: return Digits.Four;
                 case 5: return Digits.Five;
+                case 6: return Digits.Six;
                 default: throw new NotImplementedException();
             }
         }
