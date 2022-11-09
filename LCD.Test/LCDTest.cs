@@ -31,5 +31,20 @@ namespace LCD.Test
                          " _|" + Environment.NewLine +
                          "|_ " + Environment.NewLine, lcd);
         }
+
+        [Fact]
+        public void Test3()
+        {
+            // ETANT DONNE le chiffre 3
+            const int chiffre = 3;
+
+            // QUAND on le convertit en LCD
+            var lcd = new AfficheurLCD().Convert(3);
+
+            // ALORS on obtient trois lignes horizontales et un deux lignes verticales opposées
+            Assert.Equal(" _ " + Environment.NewLine +
+                         " _|" + Environment.NewLine +
+                         " _|" + Environment.NewLine, lcd);
+        }
     }
 }
