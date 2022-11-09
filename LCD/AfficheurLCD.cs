@@ -2,26 +2,24 @@
 
 namespace LCD
 {
-    public class AfficheurLCD
+    public static class AfficheurLCD
     {
-        public string Convert(int nombre)
-        {
-            switch (nombre)
+        public static string Convert(int nombre) =>
+            nombre switch
             {
-                case 0: return Digits.Zero;
-                case 1: return Digits.One;
-                case 2: return Digits.Two;
-                case 3: return Digits.Three;
-                case 4: return Digits.Four;
-                case 5: return Digits.Five;
-                case 6: return Digits.Six;
-                case 7: return Digits.Seven;
-                case 8: return Digits.Eight;
-                case 9: return Digits.Nine;
-                case > 9: return Combine(Convert(nombre / 10), Convert(nombre % 10));
-                default: throw new NotImplementedException();
-            }
-        }
+                0 => Digits.Zero,
+                1 => Digits.One,
+                2 => Digits.Two,
+                3 => Digits.Three,
+                4 => Digits.Four,
+                5 => Digits.Five,
+                6 => Digits.Six,
+                7 => Digits.Seven,
+                8 => Digits.Eight,
+                9 => Digits.Nine,
+                > 9 => Combine(Convert(nombre / 10), Convert(nombre % 10)),
+                _ => throw new NotImplementedException()
+            };
 
         private static string Combine(string blockA, string blockB)
         {

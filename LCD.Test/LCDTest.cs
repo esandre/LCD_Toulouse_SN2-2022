@@ -22,7 +22,7 @@ namespace LCD.Test
         {
             // ETANT DONNE le chiffre <chiffre>
             // QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(chiffre);
+            var lcd = AfficheurLCD.Convert(chiffre);
 
             // ALORS on obtient sa représentation LCD
             Assert.Equal(representation, lcd);
@@ -33,7 +33,7 @@ namespace LCD.Test
         {
             //ETANT DONNE le chiffre 10
             //QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(10);
+            var lcd = AfficheurLCD.Convert(10);
 
             // ALORS on obtient la représentation LCD de 1 suivie de 0, horizontalement
             Assert.Equal("     _ " + Environment.NewLine +
@@ -47,7 +47,7 @@ namespace LCD.Test
         {
             //ETANT DONNE le chiffre 1234567890
             //QUAND on le convertit en LCD
-            var lcd = new AfficheurLCD().Convert(1234567890);
+            var lcd = AfficheurLCD.Convert(1234567890);
 
             // ALORS on obtient la représentation LCD de 1 suivie de 2, etc., horizontalement
             Assert.Equal("     _   _       _   _   _   _   _   _ " + Environment.NewLine +
