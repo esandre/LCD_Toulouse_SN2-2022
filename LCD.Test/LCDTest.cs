@@ -7,7 +7,8 @@ namespace LCD.Test
             new object[] { 1, Digits.One },
             new object[] { 2, Digits.Two },
             new object[] { 3, Digits.Three },
-            new object[] { 4, Digits.Four }
+            new object[] { 4, Digits.Four },
+            new object[] { 5, Digits.Five }
         };
 
         [Theory]
