@@ -27,5 +27,19 @@ namespace LCD.Test
             // ALORS on obtient sa représentation LCD
             Assert.Equal(representation, lcd);
         }
+
+        [Fact]
+        public void Test10()
+        {
+            //ETANT DONNE le chiffre 10
+            //QUAND on le convertit en LCD
+            var lcd = new AfficheurLCD().Convert(10);
+
+            // ALORS on obtient la représentation LCD de 1 suivie de 0, horizontalement
+            Assert.Equal("    _ " + Environment.NewLine +
+                         "  || |" + Environment.NewLine +
+                         "  ||_|" + Environment.NewLine
+                , lcd);
+        }
     }
 }

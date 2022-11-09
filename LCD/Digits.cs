@@ -14,9 +14,9 @@ namespace LCD
             "|_|" + Environment.NewLine;
 
         public static readonly string One =
-            "" + Environment.NewLine +
-            "|" + Environment.NewLine +
-            "|" + Environment.NewLine;
+            "   " + Environment.NewLine +
+            "  |" + Environment.NewLine +
+            "  |" + Environment.NewLine;
 
         public static readonly string Two =
             " _ " + Environment.NewLine +

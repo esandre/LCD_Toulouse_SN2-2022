@@ -1,4 +1,6 @@
-﻿namespace LCD
+﻿using System.Text;
+
+namespace LCD
 {
     public class AfficheurLCD
     {
@@ -16,8 +18,32 @@
                 case 7: return Digits.Seven;
                 case 8: return Digits.Eight;
                 case 9: return Digits.Nine;
+                case 10: return Combine(Digits.One, Digits.Zero);
                 default: throw new NotImplementedException();
             }
+        }
+
+        private static string Combine(string blockA, string blockB)
+        {
+            using var linesA = blockA
+                .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+                .Cast<string>()
+                .GetEnumerator();
+
+            using var linesB = blockB
+                .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+                .Cast<string>()
+                .GetEnumerator();
+
+            var builder = new StringBuilder();
+            while (linesA.MoveNext() && linesB.MoveNext())
+            {
+                builder.Append(linesA.Current);
+                builder.Append(linesB.Current);
+                builder.AppendLine();
+            }
+
+            return builder.ToString();
         }
     }
 }
