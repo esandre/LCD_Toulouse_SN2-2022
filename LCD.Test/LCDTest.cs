@@ -36,9 +36,23 @@ namespace LCD.Test
             var lcd = new AfficheurLCD().Convert(10);
 
             // ALORS on obtient la représentation LCD de 1 suivie de 0, horizontalement
-            Assert.Equal("    _ " + Environment.NewLine +
-                         "  || |" + Environment.NewLine +
-                         "  ||_|" + Environment.NewLine
+            Assert.Equal("     _ " + Environment.NewLine +
+                         "  | | |" + Environment.NewLine +
+                         "  | |_|" + Environment.NewLine
+                , lcd);
+        }
+
+        [Fact]
+        public void Test1234567890()
+        {
+            //ETANT DONNE le chiffre 1234567890
+            //QUAND on le convertit en LCD
+            var lcd = new AfficheurLCD().Convert(1234567890);
+
+            // ALORS on obtient la représentation LCD de 1 suivie de 2, etc., horizontalement
+            Assert.Equal("     _   _       _   _   _   _   _   _ " + Environment.NewLine +
+                         "  |  _|  _| |_| |_  |_    | |_| |_| | |" + Environment.NewLine +
+                         "  | |_   _|   |  _| |_|   | |_|  _| |_|" + Environment.NewLine
                 , lcd);
         }
     }

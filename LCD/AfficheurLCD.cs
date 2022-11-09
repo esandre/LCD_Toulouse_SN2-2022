@@ -18,7 +18,7 @@ namespace LCD
                 case 7: return Digits.Seven;
                 case 8: return Digits.Eight;
                 case 9: return Digits.Nine;
-                case 10: return Combine(Digits.One, Digits.Zero);
+                case > 9: return Combine(Convert(nombre / 10), Convert(nombre % 10));
                 default: throw new NotImplementedException();
             }
         }
@@ -39,6 +39,7 @@ namespace LCD
             while (linesA.MoveNext() && linesB.MoveNext())
             {
                 builder.Append(linesA.Current);
+                builder.Append(' ');
                 builder.Append(linesB.Current);
                 builder.AppendLine();
             }
