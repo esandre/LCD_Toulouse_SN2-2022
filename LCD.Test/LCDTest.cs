@@ -41,10 +41,25 @@ namespace LCD.Test
             // QUAND on le convertit en LCD
             var lcd = new AfficheurLCD().Convert(3);
 
-            // ALORS on obtient trois lignes horizontales et un deux lignes verticales opposées
+            // ALORS on obtient trois lignes horizontales et un deux lignes verticales côté droit
             Assert.Equal(" _ " + Environment.NewLine +
                          " _|" + Environment.NewLine +
                          " _|" + Environment.NewLine, lcd);
+        }
+
+        [Fact]
+        public void Test4()
+        {
+            // ETANT DONNE le chiffre 4
+            const int chiffre = 4;
+
+            // QUAND on le convertit en LCD
+            var lcd = new AfficheurLCD().Convert(4);
+
+            // ALORS on obtient trois lignes horizontales et un deux lignes verticales opposées
+            Assert.Equal("   " + Environment.NewLine +
+                         "|_|" + Environment.NewLine +
+                         "  |" + Environment.NewLine, lcd);
         }
     }
 }
