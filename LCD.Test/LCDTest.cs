@@ -6,8 +6,6 @@ namespace LCD.Test
         public void Test1()
         {
             // ETANT DONNE le chiffre 1
-            const int chiffre = 1;
-
             // QUAND on le convertit en LCD
             var lcd = new AfficheurLCD().Convert(1);
 
@@ -21,8 +19,6 @@ namespace LCD.Test
         public void Test2()
         {
             // ETANT DONNE le chiffre 2
-            const int chiffre = 2;
-
             // QUAND on le convertit en LCD
             var lcd = new AfficheurLCD().Convert(2);
 
@@ -36,8 +32,6 @@ namespace LCD.Test
         public void Test3()
         {
             // ETANT DONNE le chiffre 3
-            const int chiffre = 3;
-
             // QUAND on le convertit en LCD
             var lcd = new AfficheurLCD().Convert(3);
 
@@ -51,8 +45,6 @@ namespace LCD.Test
         public void Test4()
         {
             // ETANT DONNE le chiffre 4
-            const int chiffre = 4;
-
             // QUAND on le convertit en LCD
             var lcd = new AfficheurLCD().Convert(4);
 
