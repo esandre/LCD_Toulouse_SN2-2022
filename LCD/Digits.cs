@@ -37,5 +37,10 @@ namespace LCD
             " _ " + Environment.NewLine +
             "|_ " + Environment.NewLine +
             "|_|" + Environment.NewLine;
+
+        public static readonly string Seven =
+            " _ " + Environment.NewLine +
+            "  |" + Environment.NewLine +
+            "  |" + Environment.NewLine;
     }
 }
