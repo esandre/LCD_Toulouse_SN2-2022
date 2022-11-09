@@ -6,6 +6,7 @@
         {
             switch (nombre)
             {
+                case 0: return Digits.Zero;
                 case 1: return Digits.One;
                 case 2: return Digits.Two;
                 case 3: return Digits.Three;

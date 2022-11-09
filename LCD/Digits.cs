@@ -8,6 +8,11 @@ namespace LCD
 {
     public static class Digits
     {
+        public static readonly string Zero =
+            " _ " + Environment.NewLine +
+            "| |" + Environment.NewLine +
+            "|_|" + Environment.NewLine;
+
         public static readonly string One =
             "" + Environment.NewLine +
             "|" + Environment.NewLine +

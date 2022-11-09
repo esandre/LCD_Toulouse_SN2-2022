@@ -4,6 +4,7 @@ namespace LCD.Test
     {
         public static readonly object[][] Associations = new[]
         {
+            new object[] { 0, Digits.Zero },
             new object[] { 1, Digits.One },
             new object[] { 2, Digits.Two },
             new object[] { 3, Digits.Three },
