@@ -4,13 +4,13 @@ namespace LCD.Test.Utilities
 {
     internal static class StringLineExtensions
     {
-        public static string DuplicateEachLineVertically(this string str, ushort times)
+        public static string DuplicateEachLineVertically(this string block, ushort times)
         {
-            if (times < 2) throw new ArgumentOutOfRangeException(nameof(times), times, "Minimal value : 2");
+            if (times == 1) return block;
 
             var builder = new StringBuilder();
 
-            foreach (var line in str.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var line in block.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
             {
                 var lineWithoutHorizontalBars = line.Replace('_', ' ');
                 if(!string.IsNullOrWhiteSpace(lineWithoutHorizontalBars) )
@@ -36,7 +36,7 @@ namespace LCD.Test.Utilities
 
         public static string DuplicateEachLineHorizontally(this string block, ushort times)
         {
-            if (times < 2) throw new ArgumentOutOfRangeException(nameof(times), times, "Minimal value : 2");
+            if (times == 1) return block;
 
             var builder = new StringBuilder();
 
