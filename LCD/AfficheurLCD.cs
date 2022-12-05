@@ -5,15 +5,17 @@ namespace LCD
     public class AfficheurLCD
     {
         private readonly ushort _tailleVerticale;
+        private readonly ushort _tailleHorizontale;
         private static readonly AfficheurLCD Defaut = new();
 
         private AfficheurLCD() : this(1)
         {
         }
 
-        public AfficheurLCD(ushort tailleVerticale)
+        public AfficheurLCD(ushort tailleVerticale = 1, ushort tailleHorizontale = 1)
         {
             _tailleVerticale = tailleVerticale;
+            _tailleHorizontale = tailleHorizontale;
         }
 
         public static string ConvertWithDefaultSize(int nombre)
@@ -36,11 +38,13 @@ namespace LCD
         public string Convert(int nombre)
         {
             var taille1 = ConvertWithDefaultSize(nombre);
-            return StretchVertical(taille1);
+            return StretchHorizontal(StretchVertical(taille1));
         }
 
         private string StretchVertical(string block)
         {
+            if (_tailleVerticale == 1) return block;
+
             var builder = new StringBuilder();
 
             foreach (var line in block.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
@@ -52,7 +56,54 @@ namespace LCD
 
                 builder.AppendLine(line);
             }
-                
+            
+            return builder.ToString();
+        }
+
+        private static IEnumerable<string> CutInChunksOf(string full, ushort chunkSize)
+        {
+            var charArray = full.ToArray();
+
+            while (charArray.Length != 0)
+            {
+                yield return new string(charArray.Take(4).ToArray());
+                charArray = charArray.Skip(4).ToArray();
+            }
+        }
+
+        private string StretchHorizontal(string block)
+        {
+            if (_tailleHorizontale == 1) return block;
+
+            var builder = new StringBuilder();
+
+            foreach (var line in block.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
+            {
+                foreach (var chunk in CutInChunksOf(line, 4))
+                {
+                    var isPartOfTheLastNumber = chunk.Length == 3;
+                    var substring = isPartOfTheLastNumber ? chunk : chunk[..3];
+
+                    var lineWithoutVerticalBars = substring.Replace('|', ' ');
+
+                    var hasAStartBar = substring.StartsWith('|');
+                    var hasAnEndBar = substring.EndsWith('|');
+                    var hasAnHorizontalBar = substring.Contains('_');
+
+                    var fillingChar = hasAnHorizontalBar ? '_' : ' ';
+
+                    builder.Append(hasAStartBar ? '|' : ' ');
+
+                    for (var i = 0; i < _tailleHorizontale; i++)
+                        builder.Append(fillingChar);
+
+                    builder.Append(hasAnEndBar ? '|' : ' ');
+
+                    if (!isPartOfTheLastNumber) builder.Append(' ');
+                }
+
+                builder.AppendLine();
+            }
 
             return builder.ToString();
         }

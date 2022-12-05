@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;Integration</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Integration|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;INTEGRATION</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
