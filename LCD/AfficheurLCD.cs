@@ -44,8 +44,15 @@ namespace LCD
             var builder = new StringBuilder();
 
             foreach (var line in block.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
-                for (var i = 0; i < _tailleVerticale; i++)
-                    builder.AppendLine(line);
+            {
+                var lineWithoutHorizontalElements = line.Replace('_', ' ');
+                if(!string.IsNullOrWhiteSpace(lineWithoutHorizontalElements))
+                    for (var i = 0; i < _tailleVerticale - 1; i++)
+                        builder.AppendLine(lineWithoutHorizontalElements);
+
+                builder.AppendLine(line);
+            }
+                
 
             return builder.ToString();
         }
